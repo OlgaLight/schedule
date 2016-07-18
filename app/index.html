@@ -1,0 +1,66 @@
+<!doctype html>
+<html ng-app="scheduleApp">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+
+  <script src="scripts/accordion.js"></script>
+  <script src="scripts/datepicker.js"></script>
+
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container" ng-controller="AccordionCtrl">
+  <div class="row">
+    <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true" ng-repeat="schedule in myData">
+      <div class="panel panel-primary">
+        <div class="panel-heading collapsed" role="tab" data-toggle="collapse" data-parent="#accordion"
+             data-target="{{ '#collapse' + ($index+1) }}"
+             aria-expanded="false" id="headingOne1">
+          <h4 class="panel-title">
+            {{schedule.name}}
+          </h4>
+        </div>
+        <div id="{{ 'collapse' + ($index+1) }}" class="panel-collapse collapse schedule" role="tabpanel"
+             aria-labelledby="headingOne">
+          <div class="panel-body">
+            {{schedule.description}}
+          </div>
+          <div ng-controller="DatepickerCtrl">
+            <div style="display:inline-block; min-height:290px;">
+              <uib-datepicker ng-model="dt"  ng-change="selectDate(dt, schedule)" class="well well-sm"
+                              datepicker-options="options">
+              </uib-datepicker>
+            </div>
+
+            <table class="table table-hover" id="scheduleDate">
+              <thead>
+              <tr>
+                <th>time</th>
+                <th>lesson</th>
+              </tr>
+              </thead>
+
+              <tbody ng-repeat="lesson in lessons">
+              <tr>
+                <td>{{lesson.time}}</td>
+                <td>{{lesson.lesson}}</td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

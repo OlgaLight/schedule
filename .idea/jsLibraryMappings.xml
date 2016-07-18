@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{schedule node_modules}" />
+    <file url="PROJECT" libraries="{angular, angular-animate, angular-aria, angular-material, bootstrap, jquery, jquery.mask, ui-bootstrap-tpls-1.3.3}" />
+  </component>
+</project>
