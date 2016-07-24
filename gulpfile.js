@@ -1,5 +1,53 @@
-var gulp = require('gulp'),
+// 'use strict';
+// var gulp = require('gulp'),
+//     sass = require('gulp-sass'),
+//     uglify = require('gulp-uglify'),
+//     jshint = require('gulp-jshint'),
+//     stylish = require('jshint-stylish'),
+//     browserSync = require('browser-sync').create();
+//  
+// gulp.task('styles', function () {
+//   gulp.src('./styles/style.scss')
+//       .pipe(sass())
+//       .pipe(gulp.dest('./css'))
+//       .pipe(browserSync.reload({stream: true}));
+// });
+//
+// gulp.task('usemin',['jshint'], function () {
+//   return gulp.src('./app/index.html')
+//       .pipe(usemin({
+//         css:[minifycss(),rev()],
+//         js: [uglify(),rev()]
+//       }))
+//       .pipe(gulp.dest('dist/'));
+// });
+//
+// gulp.task('jshint', function() {
+//   return gulp.src('app/scripts/*.js')
+//       .pipe(jshint())
+//       .pipe(jshint.reporter(stylish));
+// });
+//
+// gulp.task('serve', function () {
+//   browserSync.init({
+//     server: {
+//       baseDir: './'
+//     }
+//   });
+//
+//   gulp.watch('./scss/*.scss', ['styles']);
+//   gulp.watch('./**/*.html').on('change', browserSync.reload);
+// });
+//
+// gulp.task('default', ['styles', 'usemin', 'serve']);
+
+
+
+
+
+var gulp = require('gulp'),   
     minifycss = require('gulp-minify-css'),
+    sass = require('gulp-sass'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
     uglify = require('gulp-uglify'),
@@ -11,7 +59,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     changed = require('gulp-changed'),
     rev = require('gulp-rev'),
-    browserSync = require('browser-sync'),
+   
     del = require('del');
 
 gulp.task('jshint', function() {
@@ -54,6 +102,12 @@ gulp.task('watch', ['browser-sync'], function() {
   // Watch image files
   gulp.watch('app/images/**/*', ['imagemin']);
 
+});
+gulp.task('styles', function () {
+  gulp.src('./styles/style.scss')
+      .pipe(sass())
+      .pipe(gulp.dest('./css'))
+      .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('browser-sync', ['default'], function () {

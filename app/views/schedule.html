@@ -1,0 +1,18 @@
+
+
+<table class="table table-hover" id="scheduleDate">
+  <thead>
+  <tr>
+    <th>time</th>
+    <th>lesson</th>
+  </tr>
+  </thead>
+
+  <tbody ng-repeat="lesson in lessons">
+  <tr>
+    <td>{{lesson.time}}</td>
+    <td>{{lesson.lesson}}</td>
+  </tr>
+  </tbody>
+<div ui-view=""></div>
+</table>
